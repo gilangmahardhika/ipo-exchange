@@ -38,6 +38,6 @@ type Ipo struct {
 	BookBuildingEndDate   *time.Time      `gorm:"index" json:"book_building_end_date"`
 	BookBuildingMinPrice  *uint64         `json:"book_building_min_price"`
 	BookBuildingMaxPrice  *uint64         `json:"book_building_max_price"`
-	CreatedAt             time.Time       `json:"createdAt"`
+	CreatedAt             time.Time       `json:"created_at"`
 	UpdatedAt             time.Time       `json:"updated_at"`
 }
