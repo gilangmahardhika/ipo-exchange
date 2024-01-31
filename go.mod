@@ -4,6 +4,7 @@ go 1.21.5
 
 require (
 	github.com/lib/pq v1.10.9
+	github.com/rabbitmq/amqp091-go v1.9.0
 	gorm.io/driver/postgres v1.5.4
 	gorm.io/gorm v1.25.6
 )
