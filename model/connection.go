@@ -3,21 +3,18 @@ package model
 import (
 	"os"
 
-	"gorm.io/driver/postgres"
+	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
-func DatabaseConnection() {
-	// var DB *gorm.DB
-
-	// dsn := "host=localhost user=gorm password=gorm dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai"
+func DatabaseConnection() *gorm.DB {
 	dsn := os.Getenv("IPO_DSN")
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}
 
 	db.AutoMigrate(&Ipo{})
-	// DB = db
+	return db
 
 }
