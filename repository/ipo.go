@@ -1,7 +1,6 @@
 package repository
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/gilangmahardhika/ipo-exchange/model"
@@ -23,7 +22,7 @@ type IpoRepository interface {
 }
 
 func (repo *IpoRepo) CreateOrUpdateIPO(ipo *model.Ipo) error {
-	fmt.Println(ipo)
+
 	err := repo.DB.Where("id = ?", &ipo.ID).First(&ipo).Error
 	if err == nil {
 		err = repo.DB.Where("id = ?", &ipo.ID).Updates(&ipo).Error
