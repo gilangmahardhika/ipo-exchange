@@ -8,7 +8,7 @@ import (
 
 type Ipo struct {
 	ID                    string         `gorm:"primaryKey;type:varchar(255)" json:"id"`
-	Code                  string         `gorm:"type:varchar(4);Index" json:"code"`
+	Code                  string         `gorm:"type:varchar(10);Index" json:"code"`
 	Name                  string         `gprm:"type:varchar(300)" json:"name"`
 	EipoID                int            `gorm:"Index" json:"eipo_id"`
 	SharedLot             int            `json:"shared_lot"`

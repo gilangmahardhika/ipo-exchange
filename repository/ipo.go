@@ -25,16 +25,24 @@ func (repo *IpoRepo) CreateOrUpdateIPO(ipo *model.Ipo) error {
 
 	err := repo.DB.Where("id = ?", &ipo.ID).First(&ipo).Error
 	if err == nil {
-		err = repo.DB.Where("id = ?", &ipo.ID).Updates(&ipo).Error
-		if err != nil {
-			log.Println("Error on update id", &ipo.ID, err)
-			return nil
-		}
-		log.Println("Success on update id", &ipo.ID)
-		return nil
+		return repo.updateIPO(ipo)
 	}
 
-	err = repo.DB.Create(&ipo).Error
+	return repo.createIPO(ipo)
+}
+
+func (repo *IpoRepo) updateIPO(ipo *model.Ipo) error {
+	err := repo.DB.Where("id = ?", &ipo.ID).Updates(&ipo).Error
+	if err != nil {
+		log.Println("Error on update id", &ipo.ID, err)
+		return nil
+	}
+	log.Println("Success on update id", &ipo.ID)
+	return nil
+}
+
+func (repo *IpoRepo) createIPO(ipo *model.Ipo) error {
+	err := repo.DB.Create(&ipo).Error
 	if err != nil {
 		log.Println("Error on create id", &ipo, err)
 		return nil
